@@ -18,7 +18,9 @@ const pgdb = knex({
       port : 5432,
       user : 'postgres',
       password : 'Vin@1234$',
-      database : 'test'
+      database : 'test',
+      connectionString : process.env.DATABASE_URL,
+      ssl: false
     }
   });
 
