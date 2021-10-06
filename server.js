@@ -19,7 +19,6 @@ const pgdb = knex({
       user : 'postgres',
       password : 'Vin@1234$',
       database : 'test',
-      connectionString : process.env.DATABASE_URL,
       ssl: false
     }
   });
@@ -30,11 +29,7 @@ app.get('/', (req, res) => {
     res.send("It works 8, goto vnyc.ml");
 });
 
-app.get('/getall', (req, res) => {
-    pgdb('vnyc').then(data => {
-        res.json(data);
-    });
-});
+
 
 app.get('/getall', (req, res) => {
     const { id } = req.params;
