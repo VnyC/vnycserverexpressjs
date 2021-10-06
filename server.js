@@ -34,6 +34,20 @@ app.get('/getall', (req, res) => {
     });
 });
 
+app.get('/getall', (req, res) => {
+    const { id } = req.params;
+    pgdb('vnyc')
+      .then(data => {
+        if (data.length) {
+          res.json(data)
+        } else {
+          res.status(400).json('Not found')
+        }
+      })
+      .catch(err => res.status(400).json('error getting user'))
+  });
+
+
 app.put('/putdata', (req, res) => {
     var body = req.body;
         pgdb('vnyc')
